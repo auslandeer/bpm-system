@@ -32,12 +32,12 @@ public class CustomerController {
         return "addCustomer";
     }
 
-    @GetMapping("/step_2")
-    public String step2Page(Map<String, Customer> model){
-        Customer customer = customerService.takeStep2();
-        model.put("customer", customer);
-        return "step_2";
-    }
+//    @GetMapping("/step_2")
+//    public String step2Page(Map<String, Customer> model){
+//        Customer customer = customerService.takeStep2();
+//        model.put("customer", customer);
+//        return "step_2";
+//    }
 
     @PostMapping("/step_2")
     public String step2( Customer customer){

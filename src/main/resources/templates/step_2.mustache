@@ -3,7 +3,6 @@
 
 <h3>Step 2</h3>
 
-{{#customer}}
 <!--<form action="/customer/step3" method="post">-->
     <!--<input type="text" name="name" >-->
     <!--<input type="text" name="surname" >-->
@@ -11,6 +10,7 @@
 <!--</form>-->
 
 <form action="/customer/step_3" method="post">
+{{#customer}}
     <div><label> Name : <input type="text" name="name" value="{{name}}"/> </label></div>
     <div><label> Surname : <input type="text" name="surname" value="{{surname}}" /> </label></div>
     <div><label> Patronymic : <input type="text" name="patronymic" value="{{patronymic}}"/> </label></div>
@@ -22,8 +22,10 @@
     <div><label> Sum : <input type="text" name="sum" value="{{sum}}"/> </label></div>
     <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     <div><input type="submit" value="Send"/></div>
-</form>
 {{/customer}}
+</form>
+
+<a href="/revision?{{customer}}">revision</a>
 
 
 </html>

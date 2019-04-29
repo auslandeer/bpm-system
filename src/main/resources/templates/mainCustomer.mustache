@@ -1,3 +1,10 @@
-<a href="/addCustomer">Оформить кредит</a>
+<div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+
+<a href="/customer/addCustomer">Оформить кредит</a>
 Список
 Поиск

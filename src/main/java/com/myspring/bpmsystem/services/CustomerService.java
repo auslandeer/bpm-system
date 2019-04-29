@@ -25,6 +25,8 @@ public class CustomerService {
     private List<Customer> sendCustomers = new ArrayList<>();
     PriorityQueue<Customer> sendCustomers2 = new PriorityQueue<Customer>();
 
+    PriorityQueue<Customer> revision = new PriorityQueue<>();
+
     public List<Customer> read(){
         return (List<Customer>) customerRepository.findAll();
     }
@@ -52,6 +54,15 @@ public class CustomerService {
         Customer customer = sendCustomers2.peek();
         return customer;
     }
+
+    public void sendRevision(Customer customer){
+        this.revision.add(customer);
+    }
+
+    public Customer takeRevision(){
+        return this.revision.peek();
+    }
+
 
 //    public void sendToStep2(Map<String, Object> model){
 //        ListOfKeys = model.keySet().stream().collect(Collectors.

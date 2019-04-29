@@ -63,11 +63,11 @@ public class Employee implements UserDetails {
         this.patronymic = patronymic;
     }
 
-    public String getBithDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBithDate(String birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
