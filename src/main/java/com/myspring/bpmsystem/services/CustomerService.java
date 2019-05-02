@@ -22,10 +22,21 @@ public class CustomerService {
 //    private List<String> ListOfKeys = null;
 //    private List<Object> ListOfValues = null;
 
-    private List<Customer> sendCustomers = new ArrayList<>();
     PriorityQueue<Customer> sendCustomers2 = new PriorityQueue<Customer>();
 
+    PriorityQueue<Customer> sendCustomers3 = new PriorityQueue<Customer>();
+
+    PriorityQueue<Customer> sendCustomers4 = new PriorityQueue<>();
+
     PriorityQueue<Customer> revision = new PriorityQueue<>();
+
+    PriorityQueue<Customer> revisionStep3 = new PriorityQueue<>();
+
+    PriorityQueue<Customer> revisionStep4 = new PriorityQueue<>();
+
+    List<Customer> refused = new ArrayList<>();
+
+    List<Customer> approved = new ArrayList<>();
 
     public List<Customer> read(){
         return (List<Customer>) customerRepository.findAll();
@@ -55,6 +66,24 @@ public class CustomerService {
         return customer;
     }
 
+    public void sendStep3(Customer customer){
+        this.sendCustomers3.add(customer);
+    }
+
+    public Customer takeStep3(){
+        Customer customer = sendCustomers3.peek();
+        return customer;
+    }
+
+    public void sendStep4(Customer customer){
+        this.sendCustomers4.add(customer);
+    }
+
+    public Customer takeStep4(){
+        Customer customer = sendCustomers4.peek();
+        return customer;
+    }
+
     public void sendRevision(Customer customer){
         this.revision.add(customer);
     }
@@ -62,6 +91,39 @@ public class CustomerService {
     public Customer takeRevision(){
         return this.revision.peek();
     }
+
+    public void sendRevision3(Customer customer){
+        this.revisionStep3.add(customer);
+    }
+
+    public Customer takeRevision3(){
+        return this.revisionStep3.peek();
+    }
+
+    public void sendRevision4(Customer customer){
+        this.revisionStep4.add(customer);
+    }
+
+    public Customer takeRevision4(){
+        return this.revisionStep4.peek();
+    }
+
+    public void sendRefused(Customer customer){
+        this.refused.add(customer);
+    }
+
+    public void sendApproved(Customer customer){
+        this.approved.add(customer);
+    }
+
+    public List<Customer> refusedList(){
+        return this.refused;
+    }
+
+    public List<Customer> approvedList(){
+        return this.approved;
+    }
+
 
 
 //    public void sendToStep2(Map<String, Object> model){

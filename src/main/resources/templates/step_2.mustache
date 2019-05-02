@@ -8,9 +8,12 @@
     <!--<input type="text" name="surname" >-->
     <!--<button type="submit">send</button>-->
 <!--</form>-->
+{{#message}}
+    {{message}}
+{{/message}}
 
-<form action="/customer/step_3" method="post">
 {{#customer}}
+<form  method="post">
     <div><label> Name : <input type="text" name="name" value="{{name}}"/> </label></div>
     <div><label> Surname : <input type="text" name="surname" value="{{surname}}" /> </label></div>
     <div><label> Patronymic : <input type="text" name="patronymic" value="{{patronymic}}"/> </label></div>
@@ -21,11 +24,14 @@
     <div><label> Salary : <input type="text" name="salary" value="{{salary}}"/> </label></div>
     <div><label> Sum : <input type="text" name="sum" value="{{sum}}"/> </label></div>
     <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-    <div><input type="submit" value="Send"/></div>
-{{/customer}}
-</form>
+    <div><input type="submit" value="Send" formaction="/employee/step_3"/></div>
+    <input type="submit" value="revision" formaction="/employee/revision" />
+    <input type="submit" value="refuse" formaction="/employee/refuse"/>
 
-<a href="/revision?{{customer}}">revision</a>
+</form>
+{{/customer}}
+
+<!--<a href="/employee/revision?">revision</a>-->
 
 
 </html>

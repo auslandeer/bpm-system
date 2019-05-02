@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<h3>Step 4</h3>
+
+{{#message}}
+    {{message}}
+{{/message}}
+
+{{#customer}}
+    <form  method="post">
+        <div><label> Name : <input type="text" name="name" value="{{name}}"/> </label></div>
+        <div><label> Surname : <input type="text" name="surname" value="{{surname}}" /> </label></div>
+        <div><label> Patronymic : <input type="text" name="patronymic" value="{{patronymic}}"/> </label></div>
+        <div><label> Birth date : <input type="text" name="birthDate" value="{{birthDate}}"/> </label></div>
+        <div><label> IIN : <input type="text" name="iin" value="{{iin}}"/> </label></div>
+        <div><label> Job : <input type="text" name="job" value="{{job}}"/> </label></div>
+        <div><label> Position : <input type="text" name="position" value="{{position}}"/> </label></div>
+        <div><label> Salary : <input type="text" name="salary" value="{{salary}}"/> </label></div>
+        <div><label> Sum : <input type="text" name="sum" value="{{sum}}"/> </label></div>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <div><input type="submit" value="confirm" formaction="/security/confirm"/></div>
+        <input type="submit" value="revision" formaction="/security/revision" />
+        <input type="submit" value="refuse" formaction="/security/refuse"/>
+
+    </form>
+{{/customer}}
+
+</html>

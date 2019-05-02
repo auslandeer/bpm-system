@@ -6,5 +6,16 @@
 </div>
 
 <a href="/customer/addCustomer">Оформить кредит</a>
+<a href="/customer/approved_customers">Список одобренных</a>
+<a href="/customer/refused_customers">Список отказанных</a>
 Список
 Поиск
+{{#customers}}
+<table>
+    <tr>
+        <td>{{name}}</td>
+        <td>{{surname}}</td>
+        <td>{{iin}}</td>
+    </tr>
+</table>
+{{/customers}}

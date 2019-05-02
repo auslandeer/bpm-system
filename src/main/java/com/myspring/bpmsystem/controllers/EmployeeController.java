@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('MANAGER')")
+@PreAuthorize("hasAuthority('ADMIN') " +
+        "or hasAuthority('MANAGER')")
 @RequestMapping("/employee")
 public class EmployeeController {
 
@@ -30,10 +31,29 @@ public class EmployeeController {
         return "step_2";
     }
 
-    @GetMapping("/revision?{customer}")
-    public String revision(@PathVariable Customer customer){
+    @PostMapping("/revision")
+    public String revision( Customer customer){
         customerService.sendRevision(customer);
         return "redirect:/employee/step_2";
+    }
+
+    @PostMapping("/refuse")
+    public String refuse(Customer customer){
+        customerService.sendRefused(customer);
+        return "redirect:/employee/step_2";
+    }
+
+    @PostMapping("/step_3")
+    public String step3(Customer customer,
+                        Model model){
+        customerService.sendStep3(customer);
+        String message = null;
+        if(customer!=null){
+            customerService.sendStep2(customer);
+            message = "customer send!";
+        }
+        model.addAttribute("message", message);
+        return "step_2";
     }
 
     @GetMapping("/main")
@@ -60,10 +80,6 @@ public class EmployeeController {
     public void delete(@RequestParam(name = "id") Integer id){
         employeeService.delete(id);
     }
-
-
-
-
 
 
 }
